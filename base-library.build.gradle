@@ -1,0 +1,60 @@
+apply plugin: 'com.android.library'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: "kotlinx-serialization"
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
+//apply from: rootProject.file("jacoco/modules.gradle")
+
+android {
+    compileSdk ProjectConfig.compileSdk
+
+    defaultConfig {
+        minSdk ProjectConfig.minSdk
+        targetSdk ProjectConfig.targetSdk
+
+        testInstrumentationRunner = ProjectConfig.testInstrumentationRunner
+        consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField "String", "NAME_VERSION", "\"${ProjectConfig.versionName}\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            testCoverageEnabled true
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+kapt {
+    correctErrorTypes true
+}
+
+dependencies {
+
+    implementation AndroidX.androidWebKit
+
+    implementation DaggerHilt.hiltAndroid
+    kapt DaggerHilt.hiltCompiler
+
+    // JUNIT
+    testImplementation Coroutines.coroutinesTest
+    testImplementation Testing.junit4
+    testImplementation Testing.truth
+    testImplementation Testing.mockk
+    testImplementation Testing.mockkAgent
+
+    // AndroidX
+    androidTestImplementation Testing.junitAndroidExt
+}

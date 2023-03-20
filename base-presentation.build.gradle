@@ -1,0 +1,36 @@
+apply from: rootProject.file("base-library.build.gradle")
+
+android {
+    defaultConfig {
+        buildConfigField "String", "NAME_VERSION", "\"${ProjectConfig.versionName}\""
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion AndroidX.compilerComposeVersion
+    }
+}
+
+dependencies {
+    implementation AndroidX.navigationCompose
+    implementation AndroidX.hiltNavigationCompose
+    implementation AndroidX.viewModelKtx
+    kapt AndroidX.lifecycleCompiler
+
+    //implementation Google.material
+
+    implementation AndroidX.activityCompose
+    implementation AndroidX.composeMaterial
+    implementation AndroidX.composeAnimation
+    implementation AndroidX.composeUiTools
+    implementation AndroidX.composeViewModel
+    implementation AndroidX.composeAppCompatTheme
+    implementation AndroidX.composeConstraintLayout
+    debugImplementation AndroidX.poolingContainer
+
+    androidTestImplementation Testing.espressoCore
+    androidTestImplementation Testing.composeUiJunit
+}
