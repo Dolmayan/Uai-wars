@@ -9,6 +9,6 @@ object Build {
     private const val googleServicesVersion = "4.3.13"
     const val googleServices = "com.google.gms:google-services:$googleServicesVersion"
 
-    private const val serializationVersion = "1.7.10"
+    private const val serializationVersion = "1.8.10"
     const val serialization = "org.jetbrains.kotlin:kotlin-serialization:$serializationVersion"
 }

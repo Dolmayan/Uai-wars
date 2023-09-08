@@ -65,6 +65,13 @@ dependencies {
     kapt(DaggerHilt.hiltCompiler)
     implementation(AndroidX.hiltNavigationCompose)
 
+    // UI
+    implementation(AndroidX.activityCompose)
+    implementation(AndroidX.composeMaterial)
+    implementation(AndroidX.composeMaterial3)
+    implementation(AndroidX.composeUiTools)
+    implementation(AndroidX.composeAppCompatTheme)
+
     // MODULES
     implementation(project(Modules.network))
     implementation(project(Modules.preference))

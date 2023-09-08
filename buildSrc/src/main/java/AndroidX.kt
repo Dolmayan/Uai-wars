@@ -23,13 +23,15 @@ object AndroidX {
     private const val composeActivityVersion = "1.5.1"
     private const val composeAppCompatThemeVersion = "0.16.0"
     private const val composeVersion = "1.2.1"
-    const val compilerComposeVersion = "1.3.0"
+    private const val composeMaterial3Version = "1.1.0"
+    const val compilerComposeVersion = "1.4.2"
 
     // Integration with activities
     const val activityCompose = "androidx.activity:activity-compose:$composeActivityVersion"
 
     // Compose Material Design
     const val composeMaterial = "androidx.compose.material:material:$composeVersion"
+    const val composeMaterial3 = "androidx.compose.material3:material3:$composeMaterial3Version"
 
     // Animations
     const val composeAnimation = "androidx.compose.animation:animation:$composeVersion"
