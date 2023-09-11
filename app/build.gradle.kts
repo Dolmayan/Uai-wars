@@ -71,10 +71,15 @@ dependencies {
     implementation(AndroidX.composeMaterial3)
     implementation(AndroidX.composeUiTools)
     implementation(AndroidX.composeAppCompatTheme)
+    implementation(AndroidX.navigationCompose)
+    implementation(Google.accompanistNavigationAnimation)
+    implementation(Google.accompanistSystemUi)
 
     // MODULES
     implementation(project(Modules.network))
     implementation(project(Modules.preference))
     implementation(project(Modules.designSystem))
     implementation(project(Modules.core))
+    implementation(project(Modules.charactersData))
+    implementation(project(Modules.charactersDomain))
 }

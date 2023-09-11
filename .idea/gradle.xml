@@ -17,6 +17,10 @@
             <option value="$PROJECT_DIR$/common/design_system" />
             <option value="$PROJECT_DIR$/common/network" />
             <option value="$PROJECT_DIR$/common/preference" />
+            <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/characters" />
+            <option value="$PROJECT_DIR$/features/characters/data" />
+            <option value="$PROJECT_DIR$/features/characters/domain" />
           </set>
         </option>
       </GradleProjectSettings>
