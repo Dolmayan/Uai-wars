@@ -1,0 +1,11 @@
+<resources>
+    <!-- Generics -->
+    <string name="app_name" translatable="false">UaiWars</string>
+    <string name="try_again">Tentar Novamente</string>
+
+    <!-- ErrorScreen -->
+    <string name="error_screen_title">Ops!</string>
+    <string name="error_screen_description">Ocorreu um erro inesperado</string>
+
+    <!-- Accessibity -->
+</resources>

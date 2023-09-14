@@ -10,4 +10,5 @@ object Modules {
     //Feature
     const val charactersData = ":features:characters:data"
     const val charactersDomain = ":features:characters:domain"
+    const val charactersPresentation = ":features:characters:presentation"
 }

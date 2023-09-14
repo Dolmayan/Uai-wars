@@ -21,6 +21,7 @@
             <option value="$PROJECT_DIR$/features/characters" />
             <option value="$PROJECT_DIR$/features/characters/data" />
             <option value="$PROJECT_DIR$/features/characters/domain" />
+            <option value="$PROJECT_DIR$/features/characters/presentation" />
           </set>
         </option>
       </GradleProjectSettings>

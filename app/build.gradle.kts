@@ -75,6 +75,10 @@ dependencies {
     implementation(Google.accompanistNavigationAnimation)
     implementation(Google.accompanistSystemUi)
 
+    //Pagging
+    implementation(Paging.paging)
+    implementation(Paging.pagingCompose)
+
     // MODULES
     implementation(project(Modules.network))
     implementation(project(Modules.preference))
@@ -82,4 +86,5 @@ dependencies {
     implementation(project(Modules.core))
     implementation(project(Modules.charactersData))
     implementation(project(Modules.charactersDomain))
+    implementation(project(Modules.charactersPresentation))
 }

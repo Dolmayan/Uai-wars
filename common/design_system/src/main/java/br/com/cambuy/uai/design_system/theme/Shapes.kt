@@ -1,4 +1,4 @@
-package br.com.cambuy.uai.wars.ui.theme
+package br.com.cambuy.uai.design_system.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Shapes
