@@ -1,4 +1,4 @@
-package br.com.cambuy.uai.wars.ui.theme
+package br.com.cambuy.uai.design_system.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -7,15 +7,19 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 
 private val DarkColorPalette = darkColorScheme(
-    primary = Purple200,
-    onPrimary = Purple700,
-    secondary = Teal200
+    primary = yellow,
+    onPrimary = white,
+    surface = white,
+    background = darkGrey,
+    onBackground = greyBackground
 )
 
 private val LightColorPalette = lightColorScheme(
-    primary = Purple500,
-    onPrimary = Purple700,
-    secondary = Teal200
+    primary = yellow,
+    onPrimary = white,
+    surface = white,
+    background = darkGrey,
+    onBackground = greyBackground
 )
 
 @Composable

@@ -55,6 +55,10 @@ dependencies {
     testImplementation Testing.mockk
     testImplementation Testing.mockkAgent
 
+    //Pagging
+    implementation Paging.paging
+    implementation Paging.pagingCompose
+
     // AndroidX
     androidTestImplementation Testing.junitAndroidExt
 }

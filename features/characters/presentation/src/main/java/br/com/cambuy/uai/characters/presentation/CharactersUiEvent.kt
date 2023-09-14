@@ -1,6 +1,6 @@
-package br.com.cambuy.uai.wars.characters
+package br.com.cambuy.uai.characters.presentation
 
-import br.com.cambuy.uai.wars.navigation.UaiWarsScreen
+import br.com.cambuy.uai.core.navigation.UaiWarsScreen
 
 sealed interface CharactersUiEvent {
     data class NavigateTo(val route: UaiWarsScreen): CharactersUiEvent

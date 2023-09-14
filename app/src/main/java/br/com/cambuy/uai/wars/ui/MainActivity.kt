@@ -1,4 +1,4 @@
-package br.com.cambuy.uai.wars
+package br.com.cambuy.uai.wars.ui
 
 import android.content.Context
 import android.content.Intent
@@ -14,9 +14,11 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import br.com.cambuy.uai.wars.characters.CharactersScreen
+import br.com.cambuy.uai.characters.presentation.CharactersScreen
+import br.com.cambuy.uai.core.navigation.UaiWarsScreen.Companion.CHARACTERS_SCREEN
+import br.com.cambuy.uai.core.navigation.UaiWarsScreen.Companion.SPLASH_SCREEN
+import br.com.cambuy.uai.design_system.theme.UaiWarsTheme
 import br.com.cambuy.uai.wars.splash.SplashScreen
-import br.com.cambuy.uai.wars.ui.theme.UaiWarsTheme
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
@@ -72,10 +74,6 @@ class MainActivity : ComponentActivity() {
 
     companion object {
         private const val ANIMATION_DURATION = 300
-        const val SPLASH_SCREEN = "splash_screen"
-        const val CHARACTERS_SCREEN = "characters_screen"
-        const val CHARACTERS_DETAIL_SCREEN = "characters_detail_screen"
-        const val BACK_PRESSED = "back_press"
 
         fun getIntent(context: Context) = Intent(context, MainActivity::class.java)
     }
