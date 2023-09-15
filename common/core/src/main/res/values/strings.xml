@@ -2,10 +2,13 @@
     <!-- Generics -->
     <string name="app_name" translatable="false">UaiWars</string>
     <string name="try_again">Tentar Novamente</string>
+    <string name="search">Busque</string>
 
     <!-- ErrorScreen -->
     <string name="error_screen_title">Ops!</string>
     <string name="error_screen_description">Ocorreu um erro inesperado</string>
 
-    <!-- Accessibity -->
+    <!-- Accessibility -->
+    <string name="description_icon_search">Icone de busca</string>
+    <string name="description_icon_close">Fechar busca</string>
 </resources>

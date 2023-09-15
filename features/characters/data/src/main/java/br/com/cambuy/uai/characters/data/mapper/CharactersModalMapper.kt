@@ -2,8 +2,8 @@ package br.com.cambuy.uai.characters.data.mapper
 
 import br.com.cambuy.characters.domain.model.Character
 import br.com.cambuy.characters.domain.model.PeopleResponse
-import br.com.cambuy.uai.characters.data.dto.CharacterDto
-import br.com.cambuy.uai.characters.data.dto.PeopleResponseDto
+import br.com.cambuy.uai.network.dto.CharacterDto
+import br.com.cambuy.uai.network.dto.PeopleResponseDto
 
 fun PeopleResponseDto.toDomain(): PeopleResponse {
     return PeopleResponse(

@@ -1,31 +1,27 @@
 package br.com.cambuy.uai.wars.ui
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.slideInHorizontally
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import br.com.cambuy.uai.characters.presentation.CharactersScreen
 import br.com.cambuy.uai.core.navigation.UaiWarsScreen.Companion.CHARACTERS_SCREEN
 import br.com.cambuy.uai.core.navigation.UaiWarsScreen.Companion.SPLASH_SCREEN
 import br.com.cambuy.uai.design_system.theme.UaiWarsTheme
 import br.com.cambuy.uai.wars.splash.SplashScreen
-import com.google.accompanist.navigation.animation.AnimatedNavHost
-import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    @OptIn(ExperimentalAnimationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -33,31 +29,21 @@ class MainActivity : ComponentActivity() {
             UaiWarsTheme {
                 val systemUiController = rememberSystemUiController()
                 val backgroundColor = MaterialTheme.colorScheme.background
-                val navController = rememberAnimatedNavController()
+                val navController = rememberNavController()
 
                 LaunchedEffect(systemUiController) {
                     systemUiController.setSystemBarsColor(backgroundColor)
                 }
-                MonthlyPlanningNavHost(navController)
+                UaiWarsNavHost(navController)
             }
         }
     }
 
-    @OptIn(ExperimentalAnimationApi::class)
     @Composable
-    fun MonthlyPlanningNavHost(navController: NavHostController) {
-        AnimatedNavHost(
+    fun UaiWarsNavHost(navController: NavHostController) {
+        NavHost(
             navController = navController,
-            startDestination = SPLASH_SCREEN,
-            enterTransition = {
-                slideInHorizontally(
-                    animationSpec = tween(ANIMATION_DURATION),
-                    initialOffsetX = { it / 2 }
-                )
-            },
-            popEnterTransition = {
-                slideInHorizontally(animationSpec = tween(ANIMATION_DURATION))
-            }
+            startDestination = CHARACTERS_SCREEN,
         ) {
             screens(navController)
         }
@@ -65,16 +51,10 @@ class MainActivity : ComponentActivity() {
 
     private fun NavGraphBuilder.screens(navController: NavHostController) {
         composable(route = SPLASH_SCREEN) {
-            CharactersScreen(navigation = navController)
-        }
-        composable(route = CHARACTERS_SCREEN) {
             SplashScreen(navigation = navController)
         }
-    }
-
-    companion object {
-        private const val ANIMATION_DURATION = 300
-
-        fun getIntent(context: Context) = Intent(context, MainActivity::class.java)
+        composable(route = CHARACTERS_SCREEN) {
+            CharactersScreen(navigation = navController)
+        }
     }
 }

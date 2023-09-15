@@ -1,4 +1,4 @@
-package br.com.cambuy.uai.design_system.screens.components
+package br.com.cambuy.uai.design_system.components
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement

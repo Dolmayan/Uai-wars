@@ -24,7 +24,7 @@ object AndroidX {
     private const val composeAppCompatThemeVersion = "0.16.0"
     private const val composeVersion = "1.2.1"
     private const val composeMaterial3Version = "1.1.0"
-    const val compilerComposeVersion = "1.4.2"
+    const val compilerComposeVersion = "1.4.7"
 
     // Integration with activities
     const val activityCompose = "androidx.activity:activity-compose:$composeActivityVersion"
