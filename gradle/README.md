@@ -1,28 +1,16 @@
-# README #
+<h4 align="center">
+	🚧   Work in progress...  🚧
+</h4>
 
-This README would normally document whatever steps are necessary to get your application up and running.
+## 🦸 Author
 
-### What is this repository for? ###
+Made by Nícolas Rocha Cambuy.
 
-* Quick summary
-* Version
+[![Linkedin Badge](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nicolas-rocha-cambuy-1a8bb218b/)
+[![Gmail Badge](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:nicolasrochabr@gmail.com)
 
-### How do I get set up? ###
+---
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+## 📝 License
 
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+This project is under license [MIT](./LICENSE).
