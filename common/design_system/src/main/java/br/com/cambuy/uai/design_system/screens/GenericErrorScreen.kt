@@ -21,7 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.cambuy.uai.core.util.coreStrings
 import br.com.cambuy.uai.design_system.drawableDesignSystem
-import br.com.cambuy.uai.design_system.screens.components.ButtonComponent
+import br.com.cambuy.uai.design_system.components.ButtonComponent
 import br.com.cambuy.uai.design_system.theme.UaiWarsTheme
 
 @Composable

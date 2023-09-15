@@ -3,7 +3,7 @@ package br.com.cambuy.uai.characters.data
 import br.com.cambuy.characters.domain.CharactersRepository
 import br.com.cambuy.uai.characters.data.responses.genericError
 import br.com.cambuy.uai.characters.data.responses.validGetCharactersResponse
-import br.com.cambuy.uai.characters.data.service.CharactersService
+import br.com.cambuy.uai.network.service.CharactersService
 import com.google.common.truth.Truth
 import io.mockk.MockKAnnotations
 import kotlinx.coroutines.runBlocking
@@ -53,7 +53,7 @@ class CharactersRepositoryImplTest {
     }
 
     @Test
-    fun `given getCharacters request, then we wait for a correct response with code 200`() =
+    fun `given getCharactersById request, then we wait for a correct response with code 200`() =
         runBlocking {
             mockWebServer.enqueue(
                 MockResponse()
@@ -61,28 +61,28 @@ class CharactersRepositoryImplTest {
                     .setBody(validGetCharactersResponse)
             )
 
-            val result = repository.getCharactersList(1)
+            val result = repository.getCharactersById(1)
 
             Truth.assertThat(result.data).isNotNull()
             Truth.assertThat(result.error).isNull()
         }
 
     @Test
-    fun `given getCharacters request, then we wait for a response with code 204 without content`() =
+    fun `given getCharactersById request, then we wait for a response with code 204 without content`() =
         runBlocking {
             mockWebServer.enqueue(
                 MockResponse()
                     .setResponseCode(RESPONSE_SUCCESS_WITH_NO_BODY)
             )
 
-            val result = repository.getCharactersList(1)
+            val result = repository.getCharactersById(1)
 
             Truth.assertThat(result.data).isNull()
             Truth.assertThat(result.error).isNotNull()
         }
 
     @Test
-    fun `given getCharacters request, then we wait for a response with code 400 with content`() =
+    fun `given getCharactersById request, then we wait for a response with code 400 with content`() =
         runBlocking {
             mockWebServer.enqueue(
                 MockResponse()
@@ -90,32 +90,32 @@ class CharactersRepositoryImplTest {
                     .setBody(genericError)
             )
 
-            val result = repository.getCharactersList(1)
+            val result = repository.getCharactersById(1)
 
             Truth.assertThat(result.data).isNull()
             Truth.assertThat(result.error).isNotNull()
         }
 
     @Test
-    fun `given getCharacters request, then we wait for an error response with code 404`() =
+    fun `given getCharactersById request, then we wait for an error response with code 404`() =
         runBlocking {
             mockWebServer.enqueue(
                 MockResponse()
                     .setResponseCode(RESPONSE_ERROR)
             )
 
-            val result = repository.getCharactersList(1)
+            val result = repository.getCharactersById(1)
 
             Truth.assertThat(result.data).isNull()
             Truth.assertThat(result.error).isNotNull()
         }
 
     @Test
-    fun `given getCharacters request, when no have connectivity, then expected an error response`() =
+    fun `given getCharactersById request, when no have connectivity, then expected an error response`() =
         runBlocking {
             mockWebServer.shutdown()
 
-            val result = repository.getCharactersList(1)
+            val result = repository.getCharactersById(1)
 
             Truth.assertThat(result.data).isNull()
             Truth.assertThat(result.error).isNotNull()

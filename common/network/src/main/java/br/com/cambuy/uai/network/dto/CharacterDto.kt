@@ -1,4 +1,4 @@
-package br.com.cambuy.uai.characters.data.dto
+package br.com.cambuy.uai.network.dto
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,8 +1,9 @@
 package br.com.cambuy.characters.domain.useCase
 
-import br.com.cambuy.characters.domain.model.PeopleResponse
-import br.com.cambuy.uai.core.util.Resource
+import androidx.paging.PagingData
+import br.com.cambuy.characters.domain.model.Character
+import kotlinx.coroutines.flow.Flow
 
 interface GetCharactersUseCase {
-    suspend operator fun invoke(page: Int) : Resource<PeopleResponse>
+    suspend operator fun invoke(textSearch: String) : Flow<PagingData<Character>>
 }
