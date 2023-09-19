@@ -1,7 +1,6 @@
 package br.com.cambuy.uai.network.service
 
-import br.com.cambuy.uai.network.dto.CharacterDto
-import br.com.cambuy.uai.network.dto.PeopleResponseDto
+import br.com.cambuy.uai.network.dto.CharacterResponseDto
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -9,9 +8,12 @@ import retrofit2.http.Query
 
 interface CharactersService {
 
-    @GET("people/?page/")
-    suspend fun getCharacters(@Query("page") page: Int): Response<PeopleResponseDto>
+    @GET("characters")
+    suspend fun getCharacters(
+        @Query("limit") page: Int,
+        @Query("nameStartsWith") nameStartsWith: String? = null,
+    ): Response<CharacterResponseDto>
 
-    @GET("people/{id}/")
-    suspend fun getCharactersById(@Path("id") id: Int): Response<CharacterDto>
+    @GET("characters/{characterId}")
+    suspend fun getCharactersById(@Path("characterId") id: Int): Response<CharacterResponseDto>
 }

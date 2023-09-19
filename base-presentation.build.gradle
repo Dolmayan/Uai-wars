@@ -1,4 +1,5 @@
 apply from: rootProject.file("base-library.build.gradle")
+apply from: rootProject.file("keys.gradle")
 
 android {
     defaultConfig {

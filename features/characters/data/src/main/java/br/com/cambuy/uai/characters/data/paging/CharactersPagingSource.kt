@@ -14,14 +14,11 @@ class CharactersPagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Character> {
         val position = params.key ?: FIRST_PAGE_INDEX
         return try {
-            val response = service.getCharacters(position)
+            val response = service.getCharacters(position, textSearch)
 
             if (response.isSuccessful) {
-                val formattedList = response.body()?.results?.filter {
-                    it.name?.contains(textSearch, true) == true
-                }
                 LoadResult.Page(
-                    data = formattedList?.map { it.toDomain() } ?: emptyList(),
+                    data = response.body()?.data?.results?.map { it.toDomain() } ?: emptyList(),
                     prevKey = params.key ?: FIRST_PAGE_INDEX,
                     nextKey = params.key?.plus(1) ?: FIRST_PAGE_INDEX.plus(1)
                 )

@@ -5,6 +5,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 
 //apply from: rootProject.file("jacoco/modules.gradle")
+apply from: rootProject.file("keys.gradle")
 
 android {
     compileSdk ProjectConfig.compileSdk
