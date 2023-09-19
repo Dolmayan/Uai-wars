@@ -1,0 +1,12 @@
+android {
+    defaultConfig {
+
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("local.properties").newDataInputStream())
+
+        //Private api keys
+        buildConfigField "String", "PRIVATE_API_KEY", "${properties.getProperty("private_key")}"
+        buildConfigField "String", "PUBLIC_API_KEY", "${properties.getProperty("public_key")}"
+
+    }
+}

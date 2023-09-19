@@ -5,6 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import br.com.cambuy.characters.domain.CharactersRepository
 import br.com.cambuy.characters.domain.model.Character
+import br.com.cambuy.characters.domain.model.ListCharacter
 import br.com.cambuy.uai.characters.data.mapper.toDomain
 import br.com.cambuy.uai.characters.data.paging.CharactersPagingSource
 import br.com.cambuy.uai.network.service.CharactersService
@@ -31,7 +32,7 @@ internal class CharactersRepositoryImpl @Inject constructor(
         ).flow
     }
 
-    override suspend fun getCharactersById(id: Int): Resource<Character> {
+    override suspend fun getCharactersById(id: Int): Resource<ListCharacter> {
         return runCatching {
             val result = service.getCharactersById(id)
             if (result.isSuccessful) {
@@ -41,7 +42,7 @@ internal class CharactersRepositoryImpl @Inject constructor(
             }
             val error = result.convertErrorToObject(GenericErrorDto::class.java)
             error?.let { return handleError(it) }
-            Resource.Error<Character>(ResourceError.CharactersError())
+            Resource.Error<ListCharacter>(ResourceError.CharactersError())
         }.getOrElse {
             Resource.Error(ResourceError.CharactersError(description = it.message))
         }
