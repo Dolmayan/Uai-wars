@@ -1,5 +1,6 @@
 package br.com.cambuy.uai.network
 
+import br.com.cambuy.uai.network.interceptor.HttpsInterceptor
 import br.com.cambuy.uai.network.service.CharactersService
 import dagger.Module
 import dagger.Provides
@@ -18,34 +19,53 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideService(client: OkHttpClient): CharactersService {
-        return createService(BASE_URL, client)
+    fun provideInterceptor(): HttpsInterceptor {
+        return HttpsInterceptor()
     }
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder()
-            .addInterceptor(
-                HttpLoggingInterceptor().apply {
-                    level = HttpLoggingInterceptor.Level.BODY
-                }
-            )
-            .callTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
-            .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
-            .writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
-            .readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
-            .build()
+    fun provideService(interceptor: HttpsInterceptor): CharactersService {
+        return createService(BASE_URL, interceptor)
     }
 
-    private inline fun <reified T> createService(baseUrl: String, client: OkHttpClient): T =
+    private inline fun <reified T> createService(
+        baseUrl: String,
+        interceptor: HttpsInterceptor,
+        connectTimeout: Long = DEFAULT_TIMEOUT,
+        readTimeout: Long = DEFAULT_TIMEOUT,
+    ): T =
         Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
-            .client(client)
+            .client(
+                createOkHttpClient(
+                    connectTimeout = connectTimeout,
+                    readTimeout = readTimeout,
+                    interceptor = interceptor
+                )
+            )
             .build()
             .create(T::class.java)
 
-    private const val BASE_URL = "https://swapi.dev/api/"
-    private const val DEFAULT_TIMEOUT = 15L
+    private fun createOkHttpClient(
+        connectTimeout: Long,
+        readTimeout: Long,
+        interceptor: HttpsInterceptor
+    ): OkHttpClient {
+        return OkHttpClient.Builder()
+            .addInterceptor(makeLoggingInterceptor())
+            .addInterceptor(interceptor)
+            .connectTimeout(connectTimeout, TimeUnit.SECONDS)
+            .readTimeout(readTimeout, TimeUnit.SECONDS)
+            .build()
+    }
+
+    private fun makeLoggingInterceptor(): HttpLoggingInterceptor =
+        HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+
+    private const val BASE_URL = "https://gateway.marvel.com/v1/public/"
+    private const val DEFAULT_TIMEOUT = 20L
 }
