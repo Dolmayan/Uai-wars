@@ -25,11 +25,14 @@ dependencies {
 
     implementation AndroidX.activityCompose
     implementation AndroidX.composeMaterial
+    implementation AndroidX.composeMaterial3
+    implementation AndroidX.composeUiTools
     implementation AndroidX.composeAnimation
     implementation AndroidX.composeUiTools
     implementation AndroidX.composeViewModel
     implementation AndroidX.composeAppCompatTheme
     implementation AndroidX.composeConstraintLayout
+    implementation Coil.coilCompose
     debugImplementation AndroidX.poolingContainer
 
     androidTestImplementation Testing.espressoCore
