@@ -4,6 +4,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import br.com.cambuy.characters.domain.model.Character
 import br.com.cambuy.uai.characters.data.mapper.toDomain
+import br.com.cambuy.uai.network.mock.Mock
 import br.com.cambuy.uai.network.service.CharactersService
 
 class CharactersPagingSource(
@@ -14,17 +15,13 @@ class CharactersPagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Character> {
         val position = params.key ?: FIRST_PAGE_INDEX
         return try {
-            val response = service.getCharacters(position, textSearch)
+            val response = Mock().mockCharactersScreen()
 
-            if (response.isSuccessful) {
-                LoadResult.Page(
-                    data = response.body()?.data?.results?.map { it.toDomain() } ?: emptyList(),
-                    prevKey = params.key ?: FIRST_PAGE_INDEX,
-                    nextKey = params.key?.plus(1) ?: FIRST_PAGE_INDEX.plus(1)
-                )
-            } else {
-                throw IllegalStateException(DEFAULT_ERROR)
-            }
+            LoadResult.Page(
+                data = response.data?.results?.map { it.toDomain() } ?: emptyList(),
+                prevKey = position + 1,
+                nextKey = if (position == 1) null else position - 1
+            )
 
         } catch (e: Exception) {
             LoadResult.Error(e)
