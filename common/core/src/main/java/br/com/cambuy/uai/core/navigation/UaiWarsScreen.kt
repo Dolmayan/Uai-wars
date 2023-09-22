@@ -9,6 +9,8 @@ sealed class UaiWarsScreen(val route: String) {
         const val SPLASH_SCREEN = "splash_screen"
         const val CHARACTERS_SCREEN = "characters_screen"
         const val CHARACTERS_DETAIL_SCREEN = "characters_detail_screen"
+        const val COMICS_SCREEN = "comics_screen"
+        const val SETTINGS_SCREEN = "settings_screen"
         const val BACK_PRESSED = "back_press"
     }
 }
