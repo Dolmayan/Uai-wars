@@ -2,6 +2,7 @@ package br.com.cambuy.uai.network
 
 import br.com.cambuy.uai.network.interceptor.HttpsInterceptor
 import br.com.cambuy.uai.network.service.CharactersService
+import br.com.cambuy.uai.network.service.ComicsService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,7 +26,13 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideService(interceptor: HttpsInterceptor): CharactersService {
+    fun provideCharacterService(interceptor: HttpsInterceptor): CharactersService {
+        return createService(BASE_URL, interceptor)
+    }
+
+    @Provides
+    @Singleton
+    fun provideComicsService(interceptor: HttpsInterceptor): ComicsService {
         return createService(BASE_URL, interceptor)
     }
 

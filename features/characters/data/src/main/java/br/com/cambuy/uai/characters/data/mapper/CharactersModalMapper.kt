@@ -3,8 +3,8 @@ package br.com.cambuy.uai.characters.data.mapper
 import br.com.cambuy.characters.domain.model.Character
 import br.com.cambuy.characters.domain.model.ListCharacter
 import br.com.cambuy.characters.domain.model.Thumbnail
-import br.com.cambuy.uai.network.dto.CharacterDto
-import br.com.cambuy.uai.network.dto.CharacterResponseDto
+import br.com.cambuy.uai.network.dto.character.CharacterDto
+import br.com.cambuy.uai.network.dto.character.CharacterResponseDto
 import br.com.cambuy.uai.network.dto.ThumbnailDto
 
 fun CharacterResponseDto.toDomain(): ListCharacter {

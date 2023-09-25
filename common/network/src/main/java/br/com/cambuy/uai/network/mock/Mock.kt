@@ -1,6 +1,6 @@
 package br.com.cambuy.uai.network.mock
 
-import br.com.cambuy.uai.network.dto.CharacterResponseDto
+import br.com.cambuy.uai.network.dto.character.CharacterResponseDto
 import com.google.gson.Gson
 
 class Mock {

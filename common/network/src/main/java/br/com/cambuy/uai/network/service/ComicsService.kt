@@ -6,14 +6,14 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface CharactersService {
+interface ComicsService {
 
-    @GET("characters")
-    suspend fun getCharacters(
+    @GET("comics")
+    suspend fun getComics(
         @Query("limit") page: Int,
-        @Query("nameStartsWith") nameStartsWith: String? = null,
+        @Query("titleStartsWith") titleStartsWith: String? = null,
     ): Response<CharacterResponseDto>
 
-    @GET("characters/{characterId}")
-    suspend fun getCharactersById(@Path("characterId") id: Int): Response<CharacterResponseDto>
+    @GET("comics/{comicId}")
+    suspend fun getComicsById(@Path("comicId") id: Int): Response<CharacterResponseDto>
 }

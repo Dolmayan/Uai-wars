@@ -11,4 +11,8 @@ object Modules {
     const val charactersData = ":features:characters:data"
     const val charactersDomain = ":features:characters:domain"
     const val charactersPresentation = ":features:characters:presentation"
+
+    const val comicsData = ":features:comics:data"
+    const val comicsDomain = ":features:comics:domain"
+    const val comicsPresentation = ":features:comics:presentation"
 }
